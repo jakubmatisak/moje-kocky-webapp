@@ -671,6 +671,21 @@
     }
   },
   "minifigs": {
+    "seriesValue": {
+      "title": "Value of my figures",
+      "duplicatesPlural": "The series has {count} duplicate; its price is added. | The series has {count} duplicates; their price is added.",
+      "single": "Value of one series without duplicates",
+      "singleHint": "Each figure once, duplicates are left out.",
+      "singleIncomplete": "The value of one series needs the whole series.",
+      "purchased": "Paid in total",
+      "value": "Total value",
+      "profit": "Profit",
+      "pricedOf": "{priced} of {owned} have a price",
+      "noPrice": "Your figures from this series have no price yet.",
+      "refresh": "Refresh prices of my figures",
+      "chartValue": "Value",
+      "chartPurchase": "Paid in total"
+    },
     "title": "Minifigures",
     "summary": "Series figures: {figures} · collecting: {collecting} · complete: {complete}",
     "syncCheck": "Check for new series",

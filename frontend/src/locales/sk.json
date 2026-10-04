@@ -671,6 +671,21 @@
     }
   },
   "minifigs": {
+    "seriesValue": {
+      "title": "Cena mojich figúrok",
+      "duplicatesPlural": "Séria obsahuje {count} duplikát, jeho cena sa pripočítava. | Séria obsahuje {count} duplikáty, ich cena sa pripočítava. | Séria obsahuje {count} duplikátov, ich cena sa pripočítava.",
+      "single": "Hodnota jednej série bez duplikátov",
+      "singleHint": "Každá figúrka raz, duplikáty sa nepočítajú.",
+      "singleIncomplete": "Hodnota jednej série ide, len keď máš celú sériu.",
+      "purchased": "Kúpené spolu",
+      "value": "Hodnota spolu",
+      "profit": "Zisk",
+      "pricedOf": "cenu má {priced} z {owned}",
+      "noPrice": "Tvoje figúrky zo série zatiaľ nemajú cenu.",
+      "refresh": "Obnoviť ceny mojich figúrok",
+      "chartValue": "Hodnota",
+      "chartPurchase": "Kúpené spolu"
+    },
     "title": "Figúrky",
     "summary": "Figúrok zo sérií: {figures} · zbierané série: {collecting} · kompletné: {complete}",
     "syncCheck": "Skontrolovať nové série",

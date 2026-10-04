@@ -233,6 +233,17 @@ otvorenie sekcie raz za týždeň skontroluje zoznam, séria z tohto a minulého
 roka sa raz za dva týždne stiahne znova. Zoznam tém je pomalý, preto tieto
 dve volania majú dlhší limit než 10 s. Cenovú kvótu to nemíňa.
 
+**Cena série je súčet mojich figúrok.** BrickEconomy cenu celej série nemá:
+pod holým číslom (`42233`) vráti prvú figúrku (`42233-1`). Nerozbalený sáčok
+pod holým číslom sa preto von necení (`pricing.source_prices`), len ručne.
+Stránka série vo Figúrkach má kartu `SeriesValueCard.vue` (`GET /prices/series/{num}`,
+`services/series_value.py`): kúpené, hodnota a zisk vlastnených figúrok (bez
+sáčkov), graf súčtu po dňoch od dňa, keď majú cenu všetky (`PriceHistoryChart`
+s vlastnými popismi), a obnova len mojich figúrok (`refresh-all?num=`, len
+s `auth.can('brickeconomy.price_detail')`). Duplikáty sa pripočítavajú a karta
+to povie; `?single=true` (prepínač „Hodnota jednej série“) ráta každú figúrku
+raz (prvý kúpený kus) a server ho prijme len pri kompletnej sérii.
+
 **Figúrky majú kategórie: minifigúrky a blind-box série iných radov.**
 Mighty Machines, Super Mario Character Pack, VIDIYO, Unikitty!, Duplo vrecúška
 nemajú vlastnú tému (Mighty Machines je medzi 460 setmi Technicu), preto sa
@@ -844,7 +855,7 @@ takže pri pridaní komponentu do šablóny skontroluj import.
 
 ## Testy
 
-Backend má 738 testov, frontend 369. Jadro logiky je pokryté v `test_portfolio.py`,
+Backend má 743 testov, frontend 374. Jadro logiky je pokryté v `test_portfolio.py`,
 `test_pricing.py`, `test_refresh.py`, `test_insights.py`, `test_inflation.py` a `test_import.py`, poskytovatelia v `test_providers.py`
 bežia proti uloženým JSON odpovediam cez `respx`, teda bez siete. Fixtúry
 majú tvar reálnych odpovedí, vrátane setu, ktorý je ešte v predaji a nemá

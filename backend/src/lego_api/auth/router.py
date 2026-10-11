@@ -398,6 +398,7 @@ PREFERENCE_KEYS = {
     "unlock",
     "wishlist",
     "minifigs",
+    "figures",
 }
 #: Stav jednej obrazovky je pár filtrov, nie román.
 PREFERENCE_MAX_BYTES = 8_000

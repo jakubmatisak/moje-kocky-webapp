@@ -262,7 +262,9 @@ obnoviť (predvolene 50, najviac toľko, koľko dnes ostáva) a ukáže, koľko
 volaní je dnes použitých. Denná kvóta BrickEconomy je 100 volaní, preto:
 
 1. Hromadná obnova sa nepýta na položku, na ktorú sa pýtala pred menej než
-   týždňom (`PRICE_MAX_AGE_HOURS`), ani keď vtedy zdroj cenu nemal.
+   15 dňami (`PRICE_MAX_AGE_HOURS`), ani keď vtedy zdroj cenu nemal.
+   Chýbajúce figúrky sérií, z ktorých niečo máš, sa pýtajú raz za 30 dní
+   (`MISSING_FIGURE_MAX_AGE_HOURS`), až za tvojimi kusmi a Chcem.
 2. Na jedno spustenie najviac toľko položiek, koľko si vyberieš v dialógu
    (bez neho 40, `PRICE_REFRESH_BUDGET`). Najprv tie, ktorých cenu ešte
    nepoznáme (naposledy pridané prvé), potom od najstaršej; zvyšok pri
@@ -724,8 +726,10 @@ a dialog asks how many prices to refresh (50 by default, at most what is left
 today) and shows how many calls were used today. BrickEconomy allows 100
 calls a day, so:
 
-1. A bulk refresh skips items it asked about less than a week ago
+1. A bulk refresh skips items it asked about less than 15 days ago
    (`PRICE_MAX_AGE_HOURS`), even when the source had no price then.
+   Missing figures of series you collect are asked once every 30 days
+   (`MISSING_FIGURE_MAX_AGE_HOURS`), after your own items and wishlist.
 2. At most as many items per run as you pick in the dialog (40 without it,
    `PRICE_REFRESH_BUDGET`). Items with no known price go first (most
    recently added first), then the oldest; the rest wait for the next run.

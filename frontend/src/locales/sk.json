@@ -748,7 +748,17 @@
       "missingAsc": "Chýba: najmenej",
       "missingDesc": "Chýba: najviac",
       "progressDesc": "Kompletnosť: najvyššia",
-      "progressAsc": "Kompletnosť: najnižšia"
+      "progressAsc": "Kompletnosť: najnižšia",
+      "purchaseDesc": "Kúpené, najviac",
+      "purchaseAsc": "Kúpené, najmenej",
+      "valueDesc": "Hodnota, najvyššia",
+      "valueAsc": "Hodnota, najnižšia",
+      "priceAtDesc": "Cena, najnovšia",
+      "priceAtAsc": "Cena, najstaršia",
+      "profitDesc": "Zisk, najväčší",
+      "profitAsc": "Zisk, najmenší",
+      "profitPctDesc": "Zisk v %, najväčší",
+      "profitPctAsc": "Zisk v %, najmenší"
     },
     "categoryMinifigs": "Minifigúrky",
     "summaryOther": "Kúskov zo sérií: {figures} · zbierané série: {collecting} · kompletné: {complete}",
@@ -766,7 +776,15 @@
     "openDetail": "Otvoriť detail",
     "tabSeries": "Série",
     "tabMine": "Moje figúrky",
-    "mineEmptyHint": "Skús zmeniť filtre. Figúrky pridáš na stránke ich série."
+    "mineEmptyHint": "Skús zmeniť filtre. Figúrky pridáš na stránke ich série.",
+    "marketOnly": "Nemám, len cena",
+    "marketNow": "Trh teraz",
+    "valueWithDuplicatesPlural": "Súčet ráta aj {count} duplikát | Súčet ráta aj {count} duplikáty | Súčet ráta aj {count} duplikátov",
+    "colPurchase": "Kúpené",
+    "colValue": "Hodnota",
+    "colPriceAt": "Cena z",
+    "colProfit": "Zisk",
+    "colProfitPct": "%"
   },
   "purchase": {
     "title": "Kúpil som",

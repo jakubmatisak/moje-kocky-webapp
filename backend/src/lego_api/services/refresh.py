@@ -139,6 +139,7 @@ async def collect_targets(
     force: bool = False,
     fingerprint: str | None = None,
     batch: int | None = None,
+    whole_series: bool = False,
 ) -> RefreshPlan:
     """Zoznam položiek, ktoré používateľ naozaj potrebuje obnoviť.
 
@@ -164,7 +165,13 @@ async def collect_targets(
     predvolený strop servera (``price_refresh_budget``), ``budget`` nie.
 
     Chýbajúce figúrky sérií v pláne nie sú: ich cenu si používateľ vypýta
-    sám (Obnoviť cenu v detaile, Overiť cenu), inak by míňali dennú kvótu.
+    sám (Obnoviť cenu v detaile, Overiť cenu, Zistiť ceny chýbajúcich),
+    inak by míňali dennú kvótu.
+
+    ``whole_series`` s číslom série v ``only`` je Zistiť ceny chýbajúcich:
+    pridá každú figúrku série ako set (cena nového kusu), aj tie, ktoré
+    nemám. Vek platí ako pri dávke, cena mladšia než ``price_max_age_hours``
+    sa nepýta.
     """
     plan = RefreshPlan()
 
@@ -221,6 +228,12 @@ async def collect_targets(
         # Holé číslo série nie, zdroj pod ním vráti prvú figúrku.
         catalog = await session.get(CatalogItem, only)
         if catalog is not None and not catalog.is_series:
+            target = PriceTarget(catalog.catalog_num, PriceKind.SET, PriceCondition.NEW)
+            await consider(target, catalog, False, datetime.now(UTC))
+
+    if only is not None and whole_series:
+        members = select(CatalogItem).where(CatalogItem.parent_num == only)
+        for catalog in (await session.execute(members)).scalars():
             target = PriceTarget(catalog.catalog_num, PriceKind.SET, PriceCondition.NEW)
             await consider(target, catalog, False, datetime.now(UTC))
 
@@ -299,6 +312,7 @@ async def refresh_prices(
     force: bool = False,
     limit: int | None = None,
     claimed: bool = False,
+    whole_series: bool = False,
 ) -> RefreshState:
     """Obnoví ceny pre jedného používateľa. Volá sa z BackgroundTasks.
 
@@ -354,6 +368,7 @@ async def refresh_prices(
                 force=force,
                 fingerprint=provider.fingerprint,
                 batch=limit,
+                whole_series=whole_series,
             )
         state.skipped_fresh = plan.skipped_fresh
 
